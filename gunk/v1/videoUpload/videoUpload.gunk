@@ -1,0 +1,53 @@
+package videoUpload
+
+type VideoUpload struct {
+	ID                 string     `pb:"1" json:"id"`
+	Title     string `pb:"2" json:"title"`
+	VideoFile    string `pb:"3" json:"video_file"`
+	IsActive bool   `pb:"4" json:"is_active"`
+}
+
+type CreateVideoUploadRequest struct {
+	VideoUpload VideoUpload `pb:"1" json:"id"`
+}
+
+type CreateVideoUploadResponse struct {
+	ID int64 `pb:"1" json:"id"`
+}
+
+type GetVideoUploadRequest struct {
+	ID int64 `pb:"1" json:"id"`
+}
+
+type GetVideoUploadResponse struct {
+	VideoUpload VideoUpload `pb:"1" json:"id"`
+}
+
+type UpdateVideoUploadRequest struct {
+	VideoUpload VideoUpload `pb:"1" json:"id"`
+}
+
+type UpdateVideoUploadResponse struct{
+    ID int64 `pb:"1" json:"id"`
+}
+
+type DeleteVideoUploadRequest struct {
+	ID int64 `pb:"1" json:"id"`
+}
+
+type DeleteVideoUploadResponse struct{}
+
+type CompleteVideoUploadRequest struct {
+	ID int64 `pb:"1" json:"id"`
+}
+
+type CompleteVideoUploadResponse struct{}
+
+
+type VideoUploadRegService interface {
+	CreateVideo(CreateVideoUploadRequest) CreateVideoUploadResponse
+	GetVideo(GetVideoUploadRequest) GetVideoUploadResponse
+	UpdateVideo(UpdateVideoUploadRequest) UpdateVideoUploadResponse
+	DeleteVideo(DeleteVideoUploadRequest) DeleteVideoUploadResponse
+	CompleteVideo(CompleteVideoUploadRequest) CompleteVideoUploadResponse
+}
